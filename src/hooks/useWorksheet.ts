@@ -8,10 +8,7 @@ export const useWorksheet = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  // state: { [taskId]: 'correct' | 'incorrect' }
   const [results, setResults] = useState<Record<string, SubmissionStatus>>({});
-  // state: { [taskId]: 'selectedOptionId' }
   const [selections, setSelections] = useState<Record<string, string>>({});
 
   useEffect(() => {
@@ -55,5 +52,5 @@ export const useWorksheet = () => {
     }
   };
 
-  return { tasks, loading, results, selections, submitAnswer };
+  return { tasks, loading, error, results, selections, submitAnswer };
 };

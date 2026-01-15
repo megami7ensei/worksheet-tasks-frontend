@@ -1,10 +1,12 @@
 import React from 'react';
 
+import type { SubmissionStatus } from './../../types';
+
 interface OptionProps {
   text: string;
   isSelected: boolean;
   isDisabled: boolean;
-  status: 'idle' | 'correct' | 'incorrect';
+  status: SubmissionStatus;
   onClick: () => void;
 }
 
@@ -15,7 +17,6 @@ export const Option: React.FC<OptionProps> = ({
   status,
   onClick,
 }) => {
-  // Dynamic class logic
   const baseClasses =
     'w-full p-4 mb-3 text-left rounded-lg border-2 transition-all duration-200 font-medium';
 
@@ -29,7 +30,7 @@ export const Option: React.FC<OptionProps> = ({
   } else if (status === 'incorrect') {
     stateClasses = isSelected
       ? 'border-red-500 bg-red-50 text-red-700'
-      : 'border-gray-200 bg-gray-100 text-gray-400'; // dim others
+      : 'border-gray-200 bg-gray-100 text-gray-400';
   }
 
   return (
@@ -42,7 +43,6 @@ export const Option: React.FC<OptionProps> = ({
     >
       <div className="flex items-center justify-between">
         <span>{text}</span>
-        {/* Optional Icon Feedback */}
         {status === 'correct' && <span>✓</span>}
         {status === 'incorrect' && isSelected && <span>✕</span>}
       </div>

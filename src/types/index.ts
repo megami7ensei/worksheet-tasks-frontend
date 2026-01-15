@@ -16,4 +16,4 @@ export interface TaskResult {
   correctOptionId?: string; // optional: helpful for feedback
 }
 
-export type SubmissionStatus = 'idle' | 'submitting' | 'correct' | 'incorrect';
+export type SubmissionStatus = 'idle' | 'correct' | 'incorrect';
