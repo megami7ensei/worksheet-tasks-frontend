@@ -1,11 +1,9 @@
-// src/App.tsx
 import React from 'react';
 import { Header } from './components/layout/Header';
 import { Option } from './components/worksheet/Option';
 import { useWorksheet } from './hooks/useWorksheet';
 
 const App: React.FC = () => {
-  // FIX: Added 'error' to the destructuring list
   const { tasks, loading, error, results, selections, submitAnswer } =
     useWorksheet();
 
@@ -17,7 +15,6 @@ const App: React.FC = () => {
     );
   }
 
-  // Error State Handling
   if (error) {
     return (
       <div className="flex justify-center items-center h-screen text-red-500">
@@ -34,7 +31,6 @@ const App: React.FC = () => {
     );
   }
 
-  // Edge Case: No tasks returned
   if (tasks.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 font-sans">

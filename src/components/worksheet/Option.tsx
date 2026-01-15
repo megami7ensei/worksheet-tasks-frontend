@@ -23,15 +23,13 @@ export const Option: React.FC<OptionProps> = ({
     'border-gray-200 bg-white hover:border-[#50c878] hover:bg-gray-50 text-gray-700';
 
   if (isSelected && status === 'idle') {
-    // Selected but not yet submitted
     stateClasses = 'border-[#50c878] bg-[#99e999]/20 text-[#2e7d4b]';
   } else if (status === 'correct') {
     stateClasses = 'border-green-600 bg-green-100 text-green-800';
   } else if (status === 'incorrect') {
-    // Only show red if this specific option was the one selected
     stateClasses = isSelected
       ? 'border-red-500 bg-red-50 text-red-700'
-      : 'border-gray-200 bg-gray-100 text-gray-400'; // Dim others
+      : 'border-gray-200 bg-gray-100 text-gray-400'; // dim others
   }
 
   return (

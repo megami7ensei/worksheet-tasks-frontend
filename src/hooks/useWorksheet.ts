@@ -9,9 +9,9 @@ export const useWorksheet = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // State: { [taskId]: 'correct' | 'incorrect' }
+  // state: { [taskId]: 'correct' | 'incorrect' }
   const [results, setResults] = useState<Record<string, SubmissionStatus>>({});
-  // State: { [taskId]: 'selectedOptionId' }
+  // state: { [taskId]: 'selectedOptionId' }
   const [selections, setSelections] = useState<Record<string, string>>({});
 
   useEffect(() => {
@@ -35,10 +35,9 @@ export const useWorksheet = () => {
   }, []);
 
   const submitAnswer = async (taskId: string, optionId: string) => {
-    // Update local selection state immediately for UI responsiveness
+    // update local selection state immediately for UI responsiveness
     setSelections((prev) => ({ ...prev, [taskId]: optionId }));
 
-    // Optimistic UI or wait for response? Let's wait for validation in this case.
     try {
       const response = await apiClient.post<{ correct: boolean }>(
         `/worksheet-tasks/${taskId}/answer`,
